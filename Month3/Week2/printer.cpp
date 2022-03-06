@@ -36,12 +36,11 @@ int solution(vector<int> priorities, int location) {
             if(location>0){
              priorities.erase(priorities.begin());   //맨앞 대기목록에서 꺼내고
              answer++;      //출력횟수 증가
-             location--;
+            location--;
             }
             else if(location==0){   //location이 0이라는건 종료조건임
                 priorities.erase(priorities.begin());   //맨앞 대기목록에서 꺼내고
                 answer++;
-                cout<<answer;
                 break;
             }
         }
