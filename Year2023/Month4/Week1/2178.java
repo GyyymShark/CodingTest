@@ -3,7 +3,7 @@
 import java.awt.*;
 import java.util.*;
 import java.io.*;
-
+//
 class Main{
     static int[][] board;
     static int[][] dist;
