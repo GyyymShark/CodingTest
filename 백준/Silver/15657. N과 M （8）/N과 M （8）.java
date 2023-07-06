@@ -18,11 +18,11 @@ class Main{
             board[i]=Integer.parseInt(st.nextToken());
         }
         Arrays.sort(board);
-        func(0,0,0);
+        func(0,0);
         System.out.println(sb);
 
     }
-    static void func(int depth, int idx, int cur){
+    static void func(int depth, int idx){
        if(depth==m){
            for(int i=0; i<m; i++){
                sb.append(arr[i]+" ");
@@ -32,8 +32,8 @@ class Main{
        }
 
        for(int i=idx; i<n; i++){
-           arr[cur]=board[i];
-           func(depth+1, i, cur+1);
+           arr[depth]=board[i];
+           func(depth+1, i);
        }
     }
 }
