@@ -95,16 +95,9 @@ public class Main {
 
                 if(map[x][y]==-1 || jihun[x][y]>=0) continue;
 
-                if(fire[x][y]==-1){
-                    jq.add(new Point(x,y));
-                    jihun[x][y]=jihun[cur.x][cur.y]+1;
-                }
-                else{
-                    if(fire[x][y]>jihun[cur.x][cur.y]+1){
-                        jq.add(new Point(x,y));
-                        jihun[x][y]=jihun[cur.x][cur.y]+1;
-                    }
-                }
+                if(fire[x][y]!=-1 && fire[x][y]<=jihun[cur.x][cur.y]+1) continue;
+                jq.add(new Point(x,y));
+                jihun[x][y]=jihun[cur.x][cur.y]+1;
 
 
 
