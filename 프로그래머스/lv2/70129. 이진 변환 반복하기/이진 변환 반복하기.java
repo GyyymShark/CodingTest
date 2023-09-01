@@ -1,28 +1,16 @@
 class Solution {
     public int[] solution(String s) {
-        int zeroCount=0;
-        int loop=0;
+        int zeroCount=0, loopCount=0;
+    
         while(!s.equals("1")){
-            String str="";
-            for(char x : s.toCharArray()){
-                if(x=='0') zeroCount++;
-                else str+=x;
-            }
-            loop++;
+            loopCount++;
+            int temp=0;
+            for(int i=0; i<s.length(); i++) if(s.charAt(i)=='0') temp++;
             
-            int length=str.length();
-            s="";
-            String temp="";
-            while(length!=0){
-                int value=length%2;
-                length=length/2;
-                temp+=value;
-            }
-            for(int i=temp.length()-1; i>=0; i--){
-                s+=temp.charAt(i);
-            }
+            s=Integer.toBinaryString(s.length()-temp);
+            zeroCount+=temp;
         }
-        int[] arr= {loop,zeroCount};
-        return arr;
+        return new int[] {loopCount,zeroCount};
+        
     }
 }
