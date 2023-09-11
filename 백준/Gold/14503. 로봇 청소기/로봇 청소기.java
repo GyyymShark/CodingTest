@@ -17,8 +17,8 @@ class Main{
     static int[][] map;
     static Queue<Point> q =new LinkedList<>();
 
-    static int[] dx={-1,1,0,0};
-    static int[] dy={0,0,-1,1};
+    static int[] dx={-1,0,1,0};
+    static int[] dy={0,1,0,-1};
     static int count=0;
 
     public static void main(String[] args)throws IOException{
@@ -82,39 +82,13 @@ class Main{
 
 
             if(!emptyCheck){    //주변 4칸 중 청소되지 않은 빈 칸이 없는 경우 (d=북동남서)
-                if(d==0){   //북
-                    int x=cur.x+1;
-                    int y=cur.y;
 
-                    if(x<0 || x>=n) break;
+                int x=cur.x+dx[(d+2)%4];
+                int y=cur.y+dy[(d+2)%4];
 
-                    if(map[x][y]!=-1) q.add(new Point(x,y));
-                }
+                if(x<0 || x>=n || y<0 || y>=m || map[x][y]==-1) break;
 
-                else if(d==1){  //동
-                    int x=cur.x;
-                    int y=cur.y-1;
-
-                    if(y<0 || y>=m) break;
-
-                    if(map[x][y]!=-1) q.add(new Point(x,y));
-                }
-                else if(d==2){  //남
-                    int x=cur.x-1;
-                    int y=cur.y;
-
-                    if(x<0 || x>=n) break;
-
-                    if(map[x][y]!=-1) q.add(new Point(x,y));
-                }
-                else if(d==3){  //서
-                    int x=cur.x;
-                    int y=cur.y+1;
-
-                    if(y<0 || y>=m) break;
-
-                    if(map[x][y]!=-1) q.add(new Point(x,y));
-                }
+                q.add(new Point(x,y));
 
             }
 
@@ -124,35 +98,11 @@ class Main{
                 d--;    //반시계방향 90도 회전
                 if(d==-1) d=3;
 
-                if(d==0){
-                    int x=cur.x-1;
-                    int y=cur.y;
+                int x=cur.x+dx[d];
+                int y=cur.y+dy[d];
 
-                    if(map[x][y]==0) q.add(new Point(x,y));
-                    else q.add(new Point(cur.x, cur.y));
-                }
-                else if(d==1){
-                    int x=cur.x;
-                    int y=cur.y+1;
-
-                    if(map[x][y]==0) q.add(new Point(x,y));
-                    else q.add(new Point(cur.x, cur.y));
-                }
-                else if(d==2){
-                    int x=cur.x+1;
-                    int y=cur.y;
-
-                    if(map[x][y]==0) q.add(new Point(x,y));
-                    else q.add(new Point(cur.x, cur.y));
-                }
-                else if(d==3){
-                    int x=cur.x;
-                    int y=cur.y-1;
-
-                    if(map[x][y]==0) q.add(new Point(x,y));
-                    else q.add(new Point(cur.x, cur.y));
-                }
-
+                if(map[x][y]==0) q.add(new Point(x,y));
+                else q.add(new Point(cur.x,cur.y));
 
             }
 
